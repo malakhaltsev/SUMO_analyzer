@@ -1,0 +1,9 @@
+.main {
+    margin-top: 70px;
+}
+#button_add {
+    margin-bottom: 20px;
+}
+#input_template {
+    display: none;
+}

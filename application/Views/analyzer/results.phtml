@@ -1,0 +1,52 @@
+<?php
+$this->layout->headScript->append('/libs/charts/chartist.min.js','js');
+$this->layout->headScript->append('/libs/charts/chartist.min.css','css');
+?>
+<?php foreach ($this->data as $item):?>
+    <h1><?php echo $item->title; ?></h1>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>DataSet</th>
+                <th>Max</th>
+                <th>Min</th>
+                <th>Mean</th>
+            </tr>
+            <?php foreach ($item->overall as $akey=>$overall): ?>
+                <tr>
+                    <td><?php echo $item->legends[$akey]; ?></td>
+                    <td><?php echo $overall->getMax(); ?></td>
+                    <td><?php echo $overall->getMin(); ?></td>
+                    <td><?php echo $overall->getMean(); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <div id="chart-<?php echo $item->name; ?>"></div>
+    <script>
+        $(document).ready(function(){
+            var data = {
+                labels: [<?php echo implode(',',$item->labels); ?>],
+                series: [
+                    <?php foreach ($item->series as $section): ?>
+                        [<?php echo implode(',',$section); ?>],
+                    <?php endforeach; ?>
+                ]
+            };
+            var options = {
+                seriesBarDistance: 10
+            };
+            var responsiveOptions = [
+                ['screen and (max-width: 640px)', {
+                    seriesBarDistance: 5,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return value[0];
+                        }
+                    }
+                }]
+            ];
+            new Chartist.Bar('#chart-<?php echo $item->name; ?>', data, options, responsiveOptions);
+        });
+    </script>
+<?php endforeach; ?>

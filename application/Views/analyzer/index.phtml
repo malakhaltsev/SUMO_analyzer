@@ -1,0 +1,21 @@
+<?php
+    $this->layout->headScript->append('/js/analyzer.js','js');
+?>
+<div class="jumbotron">
+    <form action="<?php echo $this->url(['action'=>'results']); ?>" method="post" enctype="multipart/form-data">
+        <div id="input_container">
+
+        </div>
+        <div id="input_template">
+            <div class="form-group">
+                <label for="file%id%">Data File %id%</label>
+                <input type="text" class="form-control" name="title[%id%]" placeholder="Data title" id="title%id%">
+                <input type="file" name="file[%id%]" id="file%id%">
+            </div>
+        </div>
+        <a id="button_add" class="btn btn-success btn-xs">Add more</a>
+        <p></p>
+        <button type="submit" class="btn btn-primary">Analyze!</button>
+        </p>
+    </form>
+</div>

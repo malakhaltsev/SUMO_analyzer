@@ -1,0 +1,6 @@
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li<?php if ($this->menuId=='index') echo ' class="active"'; ?>><a href="<?php echo $this->url(['controller'=>'index','action'=>'index']); ?>">About</a></li>
+        <li<?php if ($this->menuId=='analyzer') echo ' class="active"'; ?>><a href="<?php echo $this->url(['controller'=>'analyzer','action'=>'index']); ?>">Compare data files</a></li>
+    </ul>
+</div>

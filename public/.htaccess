@@ -1,0 +1,12 @@
+AddDefaultCharset UTF-8
+Options +FollowSymLinks
+
+php_flag display_errors on
+php_value error_reporting E_ALL
+
+RewriteEngine on
+RewriteBase /
+RewriteRule !\.(js|ico|txt|gif|jpg|png|html|css|php|pdf|xml|zip|eot|svg|ttf|woff)$ index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule  ^(foo|bar).*  - [L]

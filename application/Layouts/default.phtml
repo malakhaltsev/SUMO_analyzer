@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <?php echo $this->headScript->readTitle(); ?>
+    <meta name="Author" content="Petr Malakhaltsev" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index,follow" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <script src="/js/libs/jquery-1.11.3.min.js"></script>
+    <script src="/js/libs/bootstrap.min.js"></script>
+    <script src="/js/init.js"></script>
+    <?php echo $this->headScript->read(); ?>
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <?php echo $this->header; ?>
+    </div>
+</div>
+
+<div class="container-fluid main">
+    <?php echo $this->content; ?>
+</div>
+</body>
+</html>
