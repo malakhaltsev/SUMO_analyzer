@@ -39,7 +39,8 @@ class Analyzer
         $dataSet->name = $name;
         $dataSet->waitSteps = new ParameterSet('Waiting Steps', 10);
         $dataSet->departDelay = new ParameterSet('Departure Delay', 10);
-        $dataSet->deprart = new ParameterSet('Departure Time', 10);
+        $dataSet->avgSpeed = new ParameterSet('Average Speed', 1);
+        $dataSet->depart = new ParameterSet('Departure Time', 10);
         $dataSet->duration = new ParameterSet('Trip Duration', 10);
 
         // read values
@@ -47,8 +48,10 @@ class Analyzer
             $attribs = $item->attributes();
             $dataSet->waitSteps->addValue(intval($attribs['waitSteps']));
             $dataSet->duration->addValue(intval($attribs['duration']));
-            $dataSet->deprart->addValue(intval($attribs['depart']));
+            $dataSet->depart->addValue(intval($attribs['depart']));
             $dataSet->departDelay->addValue(intval($attribs['departDelay']));
+            // A little bit more complicated, since SUMO doesn't give us this parameter in raw xml
+            $dataSet->avgSpeed->addValue(intval(intval($attribs['routeLength'])/intval($attribs['duration'])));
         }
 
         // Save
@@ -64,7 +67,8 @@ class Analyzer
 
         $map = ['waitSteps' => 'Waitings Steps',
                 'duration' => 'Trip Duration',
-                'deprart' => 'Departure Time',
+                'avgSpeed' => 'Average Speed',
+                'depart' => 'Departure Time',
                 'departDelay' => 'Deprature Delay'];
 
         $result = [];
